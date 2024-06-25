@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap');
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  
+}
+
+.container{
+  box-sizing: border-box;
+  color: hwb(0 0% 100%);
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 20px;
+  padding:50px;
+  color: rgb(1, 1, 1);
+  font-family: "Playwrite DE Grund", cursive;
+ 
+}
+.word{
+  justify-content: space-between;
+  
+}
+.pass{
+  padding-left: 10px;
+  font-size: large;
+  width: 350px;
+  height: 50px;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  background-color: rgb(228, 228, 228);
+}
+.pass-box{
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+}
+.copy-btn{
+  background-color: green; 
+   height: 50px;
+   outline: none;
+   color: white;
+   border: none;
+   text-decoration: none;
+}
+.copy-btn:hover{
+  background-color:rgb(43, 161, 43) ;
+}
+.btn:hover{
+  background-color: rgb(43, 161, 43);
+}
+.btn::after{
+  border: none;
+  outline: none;
+  
+}
+.word{
+ display: flex;
+ padding: 10px;
+ 
+}
+.txt{
+  width: 60px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 5px;
+  background-color: rgb(232, 230, 230);
+}
+.box{
+  width: 20px;
+  height: 20px;
+
+  
+}
+.btn{
+   width: 500px;
+   color: white;
+   background-color: green; 
+}
