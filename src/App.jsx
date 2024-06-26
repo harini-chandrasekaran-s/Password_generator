@@ -1,9 +1,48 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Checkbox from './components/checkbox'
 
 function App() {
+  const[Password, setPassword]=useState({
+    length:5,
+    uppercase:false,
+    lowercase:false,
+    numbers:false,
+    symbol:false
+
+  });
+
+  const handleChangeUppercase =()=>{
+    setPassword({
+      ...Password,
+      uppercase: !Password.uppercase,
+    });
+  }
+
+  const handleChangeLowercase=()=>{
+    setPassword({
+      ...Password,
+      lowercase: !Password.lowercase,
+    });
+  }
+
+  const handleChangeNumbers=()=>{
+    setPassword({
+      ...Password,
+      numbers:!Password.numbers,
+    });
+  }
+
+  const handleChangeSymbols=()=>{
+    setPassword({
+      ...Password,
+      symbol: !Password.symbol,
+    });
+  }
+  const[handleText,sethandleText]=useState({
+
+  });
+  
   
 
   return (
@@ -24,7 +63,7 @@ function App() {
           <label>Password Length</label>
          </div>
          <div>
-          <input className='txt' type="number"></input>
+          <input className='txt' type="number" value={handleText} onChange={(e)=> setPassword(e.target.value)}></input>
          </div>
         </div>
         <div className="word">
@@ -32,7 +71,7 @@ function App() {
             <label>Include uppercase letter</label>
           </div>
           <div>
-            <input className='box' type="checkbox"></input>
+          <Checkbox value={Password.uppercase} onChange={handleChangeUppercase}/>
           </div>
         </div>
         <div className="word">
@@ -40,7 +79,7 @@ function App() {
             <label>Include lowercase letter</label>
           </div>
           <div>
-            <input className='box' type="checkbox"></input>
+            <Checkbox value={Password.lowercase} onChange={handleChangeLowercase}/>
           </div>
         </div>
         <div className="word">
@@ -48,14 +87,14 @@ function App() {
             <label>Include numbers</label>
           </div>
           <div>
-            <input className='box' type="checkbox"></input>
+          <Checkbox value={Password.numbers} onChange={handleChangeNumbers}/>
           </div>
         </div>
         <div className="word">          <div>
             <label>Include Symbols</label>
           </div>
           <div>
-            <input className='box' type="checkbox"></input>
+          <Checkbox value={Password.symbol} onChange={handleChangeSymbols}/>
           </div>
         </div>
         <br></br>
