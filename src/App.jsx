@@ -13,7 +13,7 @@ function App() {
   });
   const[handleText,sethandleText]=useState("");
 
-  const[copied,setCopied]=useState("");
+  const[copied,setCopied]=useState(false);
 
   const handleChangeUppercase =()=>{
     setPassword({
@@ -54,11 +54,11 @@ function App() {
 
   function copybtn(){
     if(handleText.length>0){
-      navigator.clipboard.writeTest(handleText);
+      navigator.clipboard.writeText(handleText);
       setCopied(true);
-      setInverval(()=>{
+      setInterval(()=>{
         setCopied(false);
-      },2000)
+      },2000);
     }
   }
    function generatePassword(){
@@ -66,24 +66,25 @@ function App() {
      const symbolsArray=["!","@","#","$","%","^","&","*","(",")"];
      
      const characterCodes=Array.from(Array(26)).map((_e,i)=>i +97);
-     const lowerCase=characterCodes.map(letter=>String.fromCharCode(letter));
-     const upperCase=lowerCase.map(letter=>letter.toUpperCase());
+     const lowerCaseArray=characterCodes.map(letter=>String.fromCharCode(letter));
+     const upperCaseArray=lowerCaseArray.map(letter=>letter.toUpperCase());
     
      const {length,uppercase,lowercase,numbers,symbol}=Password;
      
      const generateTheWord=(length,uppercase,lowercase,numbers,symbol)=>{
       const availableCharacters=[
-        ...(uppercase ? upperCase:[]),
-        ...(lowercase ? lowerCase:[]),
+        ...(uppercase ? upperCaseArray:[]),
+        ...(lowercase ? lowerCaseArray:[]),
         ...(numbers ? numbersArray:[]),
-        ...(symbol ? symbolsArray:[]),
+        ...(symbol ? symbolsArray:[])
       ];
+
       const shuffleArray=(array)=>array.sort(()=>Math.random() -0.5);
       const characters=shuffleArray(availableCharacters).slice(0,length);
       sethandleText(characters.join(''));
       return characters;
      }
-     generatePassword(length,uppercase,lowercase,numbers,symbol);
+     generateTheWord(length,uppercase,lowercase,numbers,symbol);
 
    }
 
@@ -96,7 +97,7 @@ function App() {
               <input className='pass' type="text" value={handleText} onChange={(e)=> sethandleText(e.target.value)}/>
           </div>
           <div>
-             <button className='copy-btn' onClick={copybtn()}>{copied ? "Copied":"Copy text"}</button>
+             <button className='copy-btn' onClick={copybtn}>{copied ? "Copied":"Copy text"}</button>
           </div>
         </div>
         <br></br>
@@ -142,7 +143,7 @@ function App() {
         </div>
         <br></br>
         <div>
-          <button className='btn'onClick={generatePassword}>Generate Password</button>
+          <button className='btn' onClick={generatePassword}>Generate Password</button>
         </div>
 
       </div>
